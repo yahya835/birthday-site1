@@ -2,54 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Roeya 🎉</title>
+<title>For Roeya 💖</title>
 
 <style>
 body {
-    text-align: center;
+    margin: 0;
     font-family: Arial;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fad0c4);
+    text-align: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     overflow: hidden;
+    color: white;
 }
 
-h1 {
-    color: white;
+/* Intro screen */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #ff9a9e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+}
+
+#intro button {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Main content */
+#main {
+    display: none;
     margin-top: 50px;
 }
 
 button {
-    padding: 15px 25px;
+    padding: 15px;
     margin: 10px;
-    font-size: 16px;
-    border: none;
     border-radius: 15px;
+    border: none;
     cursor: pointer;
-    background-color: white;
-    transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.1);
-}
-
-#message, #flowers, #photo {
+/* sections */
+.section {
     display: none;
     margin-top: 20px;
-    color: white;
-    font-size: 20px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* photo */
 img {
-    display: block;
-    margin: auto;
+    width: 250px;
     border-radius: 20px;
-    box-shadow: 0 0 20px pink;
+    box-shadow: 0 0 25px pink;
 }
 
-/* floating hearts */
+/* typing effect */
+#typing {
+    border-right: 2px solid white;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+/* hearts */
 .heart {
     position: absolute;
     font-size: 20px;
@@ -61,66 +84,82 @@ img {
     100% {transform: translateY(-10vh);}
 }
 </style>
-
 </head>
+
 <body>
 
-<h1>Happy Birthday Roeya 🎂💖</h1>
-
-<button onclick="showMessage()">🎁 Gift 1</button>
-<button onclick="showFlowers()">🌸 Gift 2</button>
-<button onclick="showPhoto()">🖼️ Gift 3</button>
-
-<div id="message">
-💌 happy birthday to the prettiest girl i've ever seen, ever known and the coolest and the hbiiilest girl hhhh 😄<br>
-i wish you the best, enjoy your day my dear Roeya 💖<br>
-from Sidi Yahya ✨
+<!-- INTRO -->
+<div id="intro">
+    <h1>💖 I made something for you 💖</h1>
+    <button onclick="start()">Open it 🎁</button>
 </div>
 
-<div id="flowers">
-🌸🌸🌸🌸🌸🌸🌸<br><br>
-these flowers are for you 🌷💐<br>
-i wish i could give them to you in real life and also give you a real gift…<br>
-but for now, this is something small from me 💖<br>
-i really hope one day we can meet and i can give you something even better.
-i really hope you'd be mine someday😊
+<!-- MAIN -->
+<div id="main">
+    <h1>Happy Birthday Roeya 🎂</h1>
+
+    <button onclick="show('msg')">🎁 Gift 1</button>
+    <button onclick="show('flowers')">🌸 Gift 2</button>
+    <button onclick="show('photo')">🖼️ Gift 3</button>
+    <button onclick="playMusic()">🎵 Music</button>
+
+    <div id="msg" class="section">
+        <p id="typing"></p>
+    </div>
+
+    <div id="flowers" class="section">
+        🌸🌸🌸🌸🌸<br><br>
+        these flowers are for you 🌷💐<br>
+        i wish i could give them to you in real life...<br>
+        but for now, this is from me 💖<br>
+        and maybe one day, i'll give you something real ✨
+    </div>
+
+    <div id="photo" class="section">
+        <img src="photo.jpg">
+        <p>💖 you are truly special… more than you think 💖</p>
+    </div>
 </div>
 
-<div id="photo">
-    <img src="photo.jpg" width="250">
-    <p>💖 honestly… you are one of the most special people i've ever known, and seeing you smile is already a gift for me 💖✨</p>
-    uuuughhh you're so perfect😍
-</div>
+<!-- MUSIC -->
+<audio id="music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
 
 <script>
-function showMessage() {
-    hideAll();
-    document.getElementById("message").style.display = "block";
+function start() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("main").style.display = "block";
+    typeMessage();
 }
 
-function showFlowers() {
-    hideAll();
-    document.getElementById("flowers").style.display = "block";
+function show(id) {
+    document.querySelectorAll('.section').forEach(e => e.style.display = "none");
+    document.getElementById(id).style.display = "block";
 }
 
-function showPhoto() {
-    hideAll();
-    document.getElementById("photo").style.display = "block";
+/* typing effect */
+let text = "happy birthday to the prettiest girl i've ever seen, ever known 💖";
+let i = 0;
+
+function typeMessage() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeMessage, 50);
+    }
 }
 
-function hideAll() {
-    document.getElementById("message").style.display = "none";
-    document.getElementById("flowers").style.display = "none";
-    document.getElementById("photo").style.display = "none";
+/* music */
+function playMusic() {
+    document.getElementById("music").play();
 }
 
-/* floating hearts */
-for (let i = 0; i < 25; i++) {
+/* hearts */
+for (let i = 0; i < 30; i++) {
     let heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "💖";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
     document.body.appendChild(heart);
 }
 </script>
