@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Roeya 🎉</title>
+
+<style>
+body {
+    text-align: center;
+    font-family: Arial;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fad0c4);
+    overflow: hidden;
+}
+
+h1 {
+    color: white;
+    margin-top: 50px;
+}
+
+button {
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+#message, #flowers, #photo {
+    display: none;
+    margin-top: 20px;
+    color: white;
+    font-size: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 20px pink;
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-10vh);}
+}
+</style>
+
+</head>
+<body>
+
+<h1>Happy Birthday Roeya 🎂💖</h1>
+
+<button onclick="showMessage()">🎁 Gift 1</button>
+<button onclick="showFlowers()">🌸 Gift 2</button>
+<button onclick="showPhoto()">🖼️ Gift 3</button>
+
+<div id="message">
+💌 happy birthday to the prettiest girl i've ever seen, ever known and the coolest and the hbiiilest girl hhhh 😄<br>
+i wish you the best, enjoy your day my dear Roeya 💖<br>
+from Sidi Yahya ✨
+</div>
+
+<div id="flowers">
+🌸🌸🌸🌸🌸🌸🌸<br><br>
+these flowers are for you 🌷💐<br>
+i wish i could give them to you in real life and also give you a real gift…<br>
+but for now, this is something small from me 💖<br>
+i really hope one day we can meet and i can give you something even better.
+i really hope you'd be mine someday😊
+</div>
+
+<div id="photo">
+    <img src="photo.jpg" width="250">
+    <p>💖 honestly… you are one of the most special people i've ever known, and seeing you smile is already a gift for me 💖✨</p>
+    uuuughhh you're so perfect😍
+</div>
+
+<script>
+function showMessage() {
+    hideAll();
+    document.getElementById("message").style.display = "block";
+}
+
+function showFlowers() {
+    hideAll();
+    document.getElementById("flowers").style.display = "block";
+}
+
+function showPhoto() {
+    hideAll();
+    document.getElementById("photo").style.display = "block";
+}
+
+function hideAll() {
+    document.getElementById("message").style.display = "none";
+    document.getElementById("flowers").style.display = "none";
+    document.getElementById("photo").style.display = "none";
+}
+
+/* floating hearts */
+for (let i = 0; i < 25; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
