@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Roeya 💖</title>
 
 <style>
@@ -11,10 +12,10 @@ body {
     text-align: center;
     background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffe4e1);
     color: white;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-/* intro */
+/* INTRO */
 #intro {
     position: fixed;
     width: 100%;
@@ -25,6 +26,12 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 10;
+    text-align: center;
+}
+
+#intro h1 {
+    font-size: 2rem;
+    padding: 10px;
 }
 
 #intro button {
@@ -35,35 +42,51 @@ body {
     font-size: 18px;
 }
 
-/* main */
+/* MAIN CENTERED */
 #main {
     display: none;
-    margin-top: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
+/* TITLE */
+#main h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+/* BUTTONS */
 button {
     padding: 15px;
     margin: 10px;
     border-radius: 15px;
     border: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
-/* sections */
+/* SECTIONS */
 .section {
     display: none;
-    max-width: 600px;
-    margin: 20px auto;
+    max-width: 90%;
+    margin-top: 20px;
+    font-size: 1.3rem;
+    line-height: 1.6;
 }
 
-/* image */
+/* IMAGE */
 img {
     width: 250px;
+    max-width: 80%;
     border-radius: 20px;
     box-shadow: 0 0 20px pink;
 }
 
-/* hearts */
+/* HEARTS */
 .heart {
     position: absolute;
     font-size: 20px;
@@ -73,6 +96,22 @@ img {
 @keyframes float {
     0% {transform: translateY(100vh);}
     100% {transform: translateY(-10vh);}
+}
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+    #main h1 {
+        font-size: 1.7rem;
+    }
+
+    .section {
+        font-size: 1.1rem;
+    }
+
+    button {
+        font-size: 15px;
+        width: 80%;
+    }
 }
 </style>
 </head>
@@ -92,9 +131,57 @@ img {
     <button onclick="showSection('msg')">🎁 Gift 1</button>
     <button onclick="showSection('flowers')">🌸 Gift 2</button>
     <button onclick="showSection('photo')">🖼️ Gift 3</button>
-    <button onclick="playMusic()">🎵 Play Music</button>
 
     <!-- MESSAGE -->
     <div id="msg" class="section">
-        💌 happy birthay to the prettiest girl i've ever seen, ever known and the coolest and the hbiiilest girl hhhh 😄<br>
-        i wish you the best enjoy your day my dear roeya 💖<br>
+        💌 Happy birthday to the prettiest girl I've ever seen and known 💖<br><br>
+        You're the coolest, funniest, and most amazing girl 😄<br><br>
+        I wish you the best day ever, full of happiness, love, and smiles 🎂💖
+    </div>
+
+    <!-- FLOWERS -->
+    <div id="flowers" class="section">
+        🌸🌸🌸 Imagine a beautiful bouquet of flowers for you 🌸🌸🌸<br><br>
+        You deserve all the flowers in the world 💐💖
+    </div>
+
+    <!-- PHOTO -->
+    <div id="photo" class="section">
+        🖼️ Add your photos here later 💖
+    </div>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" src="music.mp3"></audio>
+
+<script>
+function startSite() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("main").style.display = "flex";
+
+    // PLAY MUSIC (works because user clicked button)
+    let music = document.getElementById("music");
+    music.play();
+}
+
+function showSection(id) {
+    let sections = document.querySelectorAll(".section");
+    sections.forEach(sec => sec.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+
+/* hearts */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "100vh";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+</body>
+</html>
