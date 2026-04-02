@@ -9,33 +9,33 @@ body {
     margin: 0;
     font-family: Arial;
     text-align: center;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    overflow: hidden;
+    background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffe4e1);
     color: white;
+    overflow: hidden;
 }
 
-/* Intro screen */
+/* intro */
 #intro {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: #ff9a9e;
+    background: #ff9aa2;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     z-index: 10;
 }
 
 #intro button {
     padding: 15px 25px;
-    font-size: 18px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    font-size: 18px;
 }
 
-/* Main content */
+/* main */
 #main {
     display: none;
     margin-top: 50px;
@@ -52,24 +52,15 @@ button {
 /* sections */
 .section {
     display: none;
-    margin-top: 20px;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
 }
 
-/* photo */
+/* image */
 img {
     width: 250px;
     border-radius: 20px;
-    box-shadow: 0 0 25px pink;
-}
-
-/* typing effect */
-#typing {
-    border-right: 2px solid white;
-    display: inline-block;
-    padding-right: 5px;
+    box-shadow: 0 0 20px pink;
 }
 
 /* hearts */
@@ -91,84 +82,19 @@ img {
 <!-- INTRO -->
 <div id="intro">
     <h1>💖 I made something for you 💖</h1>
-    <button onclick="start()">Open it 🎁</button>
+    <button onclick="startSite()">Open 🎁</button>
 </div>
 
 <!-- MAIN -->
 <div id="main">
-    <h1>Happy Birthday Roeya 🎂</h1>
+    <h1>Happy Birthday Roeya 🎂💖</h1>
 
-    <button onclick="show('msg')">🎁 Gift 1</button>
-    <button onclick="show('flowers')">🌸 Gift 2</button>
-    <button onclick="show('photo')">🖼️ Gift 3</button>
-    <button onclick="playMusic()">🎵 Music</button>
+    <button onclick="showSection('msg')">🎁 Gift 1</button>
+    <button onclick="showSection('flowers')">🌸 Gift 2</button>
+    <button onclick="showSection('photo')">🖼️ Gift 3</button>
+    <button onclick="playMusic()">🎵 Play Music</button>
 
+    <!-- MESSAGE -->
     <div id="msg" class="section">
-        <p id="typing"></p>
-    </div>
-
-    <div id="flowers" class="section">
-        🌸🌸🌸🌸🌸<br><br>
-              these flowers are for you 🌷💐<br>
-         i wish i could give them to you in real life...<br>
-            but for now, this is from me 💖<br>
-         and maybe one day, i'll give you something real ✨
-           i really hope you'd be mine someday🥰
-    </div>
-
-    <div id="photo" class="section">
-        <img src="photo.jpg">
-        <p>💖 you are truly special… more than you think💖
-             
-               uuuggghhhhhh you're so perfect😋 </p>
-    </div>
-</div>
-
-<!-- MUSIC -->
-<audio id="music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
-
-<script>
-function start() {
-    document.getElementById("intro").style.display = "none";
-    document.getElementById("main").style.display = "block";
-    typeMessage();
-}
-
-function show(id) {
-    document.querySelectorAll('.section').forEach(e => e.style.display = "none");
-    document.getElementById(id).style.display = "block";
-}
-
-/* typing effect */
-let text = "happy birthday to the prettiest girl i've ever seen, ever known 💖
-             
-                 you are the coolest and you are so hbiiiila <3";
-    
-let i = 0;
-
-function typeMessage() {
-    if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeMessage, 50);
-    }
-}
-
-/* music */
-function playMusic() {
-    document.getElementById("music").play();
-}
-
-/* hearts */
-for (let i = 0; i < 30; i++) {
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-    document.body.appendChild(heart);
-}
-</script>
-
-</body>
-</html>
+        💌 happy birthay to the prettiest girl i've ever seen, ever known and the coolest and the hbiiilest girl hhhh 😄<br>
+        i wish you the best enjoy your day my dear roeya 💖<br>
